@@ -1,0 +1,59 @@
+
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <title>GTarefas - Novo projeto</title>
+    <script src="js/sign_up_script.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1 style="text-align: center;">GERENCIADOR DE TARFEAS</h1>
+		<h4 style="text-align: center;">(To-do List)</h4>
+	</header>
+
+	<section>
+		<center>
+			<br> 
+		<h2>Cadastre-se</h2>
+		<br>
+		<form action="" method="POST">
+			<table cellspacing="10">
+				<tr>
+					<th style="text-align: right;">Nome:</th>
+					<td><input type="text" id="name"></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;">Bio: </th>
+					<td><input type="text" id="bio"></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;">Nome de usuário:</th>
+					<td><input type="text" id="username"></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;">Senha:</th>
+					<td><input type="password" id="pass"></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;">Confirmar senha:</th>
+					<td><input type="password" id="confpass"></td>
+				</tr>
+			</table>
+			<div id="loading"></div>
+			<button id="signup" onclick="ajaxAddUser()">Cadastrar</button>
+		</form> 
+		</center>
+	</section>
+	
+	<footer style="text-align: center; position: fixed; bottom: 10px; width: 100%">
+		<p>
+			Desenvolvimento Web I @ 2019.1 - Pontes © <br>
+			Contato: <a href="mailto:edivaniap@ufrn.edu.br">✉ edivaniap</a>
+		</p>
+	</footer>
+</body>
+</html>		
