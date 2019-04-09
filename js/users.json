@@ -1,1 +1,4 @@
-[{"name":"Administradora","bio":"Dona de todo o site","username":"admin","password":"admin"},{"name":"edivania","bio":"rsrsrsrsrsr","username":"edi","password":"epo"},{"name":"rs","bio":"o","username":"o","password":"p"}]
+[
+  {"name":"Administradora","bio":"Dona de todo o site","username":"admin","password":"admin", "projects": ["Projeto Admin"]},
+  {"name":"edivania","bio":"sleepy person","username":"edi","password":"epo", "projects": ["Projeto A"]}
+]

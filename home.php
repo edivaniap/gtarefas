@@ -1,4 +1,20 @@
+<?php
+$file_path = "js/tasks.json";
+if(file_exists($file_path)) {
+  //carrega dados atuais do json
+  $curr_tasks = file_get_contents($file_path);
+  //traduz os dados para $arrayName = array('' => , );
+  $array_tasks = json_decode($curr_tasks, true);
 
+  $USER_LOG = "edi";
+
+  foreach ($array_tasks as $t) {
+  //  if(t["user"] == $USER_LOG))
+  }
+} else {
+  $ERROR = "<label style='color: red'>Arquivo de dados de usuários não existe.</label>";
+}
+?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 
@@ -45,9 +61,9 @@
 			<tr>
 		</table>
 	</section>
-	
+
 	<footer>
 		<p style="text-align: center;">Desenvolvimento Web I @ 2019.1 - Pontes ©</p>
 	</footer>
 </body>
-</html>		
+</html>

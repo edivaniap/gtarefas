@@ -108,7 +108,7 @@ function exists($chave, $array) {
 			<!-- <button id="signup" onclick="ajaxAddUser()">Cadastrar</button> -->
       <input type="submit" id="submit" name="submit" value="Cadastrar">
 		</form>
-    <p>Já está cadastrado? <a href="sign_in.html">Fazer login</a>.</p>
+    <p>Já está cadastrado? <a href="sign_in.php">Fazer login</a>.</p>
 		</center>
 	</section>
 
