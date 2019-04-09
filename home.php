@@ -1,19 +1,33 @@
 <?php
-$file_path = "js/tasks.json";
-if(file_exists($file_path)) {
-  //carrega dados atuais do json
-  $curr_tasks = file_get_contents($file_path);
-  //traduz os dados para $arrayName = array('' => , );
-  $array_tasks = json_decode($curr_tasks, true);
+$ERROR = "";
 
-  $USER_LOG = "edi";
-
-  foreach ($array_tasks as $t) {
-  //  if(t["user"] == $USER_LOG))
+function getUser($key) {
+  $file_path = "js/users.json";
+  if(file_exists($file_path)) {
+    //carrega dados atuais do json
+    $curr_users = file_get_contents($file_path);
+    //traduz os dados para $arrayName = array('' => , );
+  $array_users = json_decode($curr_users, true);
+  foreach ($array_users as $u) {
+    if($u["username"] == $key) {
+      return $u;
+    }
   }
 } else {
   $ERROR = "<label style='color: red'>Arquivo de dados de usuários não existe.</label>";
 }
+}
+
+
+  $USER_LOG = "edi";
+  $USER_OBJ = getUser($USER_LOG);
+
+  $string = "nome: " .  $USER_OBJ["name"] . ", usuario: " . $USER_OBJ["username"] . ", bio: " .  $USER_OBJ["bio"];
+  echo $string;
+  foreach ($USER_OBJ["projects"] as $key) {
+      echo "<br>proj: " . $key;
+  }
+
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
@@ -39,22 +53,34 @@ if(file_exists($file_path)) {
 	</nav>-->
 
 	<section>
+    <?php
+    if(isset($ERROR))
+      echo $ERROR;
+    ?>
 		<table cellspacing="20">
 			<tr>
 				<td>
 					<div style="border: 1px double black; width: 250px; text-align: center;">
 						<img src="images/lisa.gif" alt="Lisa" style="width:200px;height:200px;">
-						<h3>Lisa Simpson</h3>
-						<p>Pensadora contemporânia</p>
+						<h3><?php echo  $USER_OBJ["name"]?></h3>
+						<p><?php echo  $USER_OBJ["bio"]?></p>
 						<p><a href="login.html"><button><img src="images/out.png" alt="out"> Sair</button></a></p>
 					</div>
 				</td>
 				<td>
 					<h3>Seus projetos:</h3>
 					<ul>
-						<li><a href="projeto_a.html">Projeto A</a> <a href="adc_tarefa_projeto_a.html"><img src="images/add_task.png" alt="add" title="Nova tarefa"></a></li>
-						<li><a href="#">Projeto B</a> <a href="#"><img src="images/add_task.png" alt="add" title="Nova tarefa"></a></li>
-						<li><a href="#">Projeto C</a> <a href="#"><img src="images/add_task.png" alt="add" title="Nova tarefa"></a></li>
+            <?php
+            $to_print = "";
+            foreach ($USER_OBJ["projects"] as $projeto) {
+                $to_print .= "<li><a href='projeto_a.html'>" . $projeto . "</a>";
+                $to_print .= "<a href='adc_tarefa_projeto_a.html'> <img src='images/add_task.png' alt='add' title='Nova tarefa'></a></li>";
+            }
+
+            if($to_print == "")
+              $to_print = "<li>Sem projetos cadastrados.</li>";
+            echo $to_print;
+            ?>
 					</ul>
 					<a href="adc_projeto.html"><button><img src="images/add.png" alt="add"> Projeto</button></a>
 				</td>

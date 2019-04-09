@@ -5,6 +5,7 @@ $ERROR = "";
 if(isset($_POST["submit"])) {
   if($_POST["pass"] == $_POST["confpass"]) {
     $file_path = "js/users.json";
+    //fopen($file_path, "w"); se n existe, usar em cad projeto
     if(file_exists($file_path)) {
       //carrega dados atuais do json
       $dados_atuais = file_get_contents($file_path);
@@ -20,7 +21,8 @@ if(isset($_POST["submit"])) {
           "name" => $_POST["name"],
           "bio" => $_POST["bio"],
           "username" => $_POST["username"],
-          "password" => $_POST["pass"]
+          "password" => $_POST["pass"],
+          "projects" => []
         );
         //insere o dado no array
         $array_dados[] = $temp;
@@ -45,9 +47,11 @@ if(isset($_POST["submit"])) {
  * verifica se existe dado em um array
  */
 function exists($chave, $array) {
-  foreach ($array as $element) {
-    if($element["username"] == $chave)
-      return true;
+  if($array != "") {
+    foreach ($array as $element) {
+      if($element["username"] == $chave)
+        return true;
+    }
   }
   return false;
 }

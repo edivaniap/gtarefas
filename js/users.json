@@ -1,4 +1,2 @@
-[
-  {"name":"Administradora","bio":"Dona de todo o site","username":"admin","password":"admin", "projects": ["Projeto Admin"]},
-  {"name":"edivania","bio":"sleepy person","username":"edi","password":"epo", "projects": ["Projeto A"]}
-]
+[{"name":"maria","bio":"m","username":"m","password":"m","projects":["pA, pB"]},
+{"name":"edivania","bio":"programando ger de tarefas e é isto","username":"edi","password":"a","projects":["projA", "projB", "projC"]}]
