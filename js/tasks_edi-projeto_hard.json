@@ -1,8 +1,38 @@
 [
   {
     "delegateto": "Maykom",
-    "descption": "To implement fibonacci.",
+    "descption": "To implement FIBONACCI.",
     "date": "29-04-2019",
+    "status": "todo"
+  },
+  {
+    "delegateto": "Rafaela",
+    "descption": "To implement SUM.",
+    "date": "17-04-2019",
+    "status": "doing"
+  },
+  {
+    "delegateto": "Rizia",
+    "descption": "To implement HEAP.",
+    "date": "18-04-2019",
+    "status": "todo"
+  },
+  {
+    "delegateto": "Dhulya",
+    "descption": "To implement VECTOR.",
+    "date": "11-04-2019",
+    "status": "finalized"
+  },
+  {
+    "delegateto": "Dhulya",
+    "descption": "To implement PILHA.",
+    "date": "17-04-2019",
+    "status": "doing"
+  },
+  {
+    "delegateto": "Lian",
+    "descption": "To implement MIN_HEAP.",
+    "date": "17-04-2019",
     "status": "todo"
   }
 ]

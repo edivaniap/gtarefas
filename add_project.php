@@ -85,7 +85,7 @@ $USER_OBJ = getUser($USER_LOG);
             <?php
             $to_print = "";
             foreach ($USER_OBJ["projects"] as $projeto) {
-                $to_print .= "<li><a href='projeto_a.html'>" . $projeto . "</a>";
+                $to_print .= "<li><a href='project.php?p=" . $projeto . "'>" . $projeto . "</a>";
                 $to_print .= "<a href='adc_tarefa_projeto_a.html'> <img src='images/add_task.png' alt='add' title='Nova tarefa'></a></li>";
             }
 

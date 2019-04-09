@@ -39,10 +39,6 @@ if(isset($_GET["p"])) {
     //criando o name para o arquivo de dados do projeto
     $file_path = "js/tasks_". $str_user."-".$str_project.".json";
 
-   echo $str_project."<br>";
-   echo $str_user ."<br>";
-   echo $file_path."<br>";
-
    if(!file_exists($file_path)) {
      fopen($file_path, "w"); //se n existe, vai criar um novo
    }
@@ -87,6 +83,42 @@ $USER_OBJ = getUser($USER_LOG);
 					<h2> <?php echo  $PROJECT?> <a href="adc_tarefa_projeto_a.html"><img src="images/add_task2.png" alt="add" title="Nova tarefa"></a></h2>
 					<h2>Tarefas</h2>
             <?php
+            $str_todo = "";
+            $str_doing = "";
+            $str_finalized = "";
+
+            if($array_tarefas != "") {
+              foreach ($array_tarefas as $tarefa) {
+                if($tarefa["status"] == "todo") {
+                  $str_todo .= "<td>
+                              <p><b>Responsável:</b> ". $tarefa["delegateto"] ."</p>
+                              <p><b>Descrição:</b> ". $tarefa["descption"] ."</p>
+                              <p><b>Prazo:</b> ". $tarefa["date"] ."</p>
+                              <p><button>Iniciar</button></p>
+                            </td>";
+                } else if($tarefa["status"] == "doing") {
+                  $str_doing .= "<td>
+                              <p><b>Responsável:</b> ". $tarefa["delegateto"] ."</p>
+                              <p><b>Descrição:</b> ". $tarefa["descption"] ."</p>
+                              <p><b>Prazo:</b> ". $tarefa["date"] ."</p>
+                              <p><button>Finalizar</button></p>
+                            </td>";
+                } else if($tarefa["status"] == "finalized") {
+                  $str_finalized .= "<td>
+                              <p><b>Responsável:</b> ". $tarefa["delegateto"] ."</p>
+                              <p><b>Descrição:</b> ". $tarefa["descption"] ."</p>
+                              <p><b>Prazo:</b> ". $tarefa["date"] ."</p>
+                              <p><button>Reabrir</button></p>
+                            </td>";
+                } else {
+                    $ERROR = "<p style='color: crimson'> Erro: Há tarefas sem status definido.</p>";
+                }
+              }
+            } else {
+              $MESSAGE = "<p> Informção: Não há tarefas cadastradas ainda.</p>";
+            }
+            ?>
+            <?php
             if(isset($ERROR))
               echo $ERROR;
 
@@ -95,91 +127,31 @@ $USER_OBJ = getUser($USER_LOG);
             ?>
             <!-- TABELA DE TAREFAS -->
 						<table border="1" cellspacing="10" cellpadding="20">
-							<tr>
-								<th>A fazer</th>
-								<th>Em andamento</th>
-								<th>Concluído</th>
+              <!-- coluna de tarefas a fazer -->
+              <tr>
+                  <th style="background-color: Tomato;">A fazer</th>
+                  <?php echo $str_todo ?>
 							</tr>
+
+              <!-- coluna em andamento -->
 							<tr>
-<?php
-if($array_tarefas != "") {
-  //$td_todo
-  foreach ($array_tarefas as $tarefa) {
-    if($tarefa["status"] == "todo") {
-      $str = "";
-      $str .= "<td>
-        <p><b>Responsável:</b> ". $tarefa["delegateto"] ."</p>
-        <p><b>Descrição:</b> ". $tarefa["descption"] ."</p>
-        <p><b>Prazo:</b> ". $tarefa["date"] ."</p>
-        <p><button>Iniciar</button></p></td>";
-        echo $str;
-    }
-  }
-} else {
-  echo "<p> Não há tarefas cadastradas ainda.</p>";
-}
-?>
-								<td>
-									<p><b>Responsável:</b> Rafael</p>
-									<p><b>Descrição:</b> Recarregar celular, comprar comidas, etc</p>
-									<p><b>Prazo:</b> 27/02/2019</p>
-									<p>
-										<a href="#"><img src="images/init_task.png" alt="init" title="Iniciar tarefa"></a>
-										<a href="#"><img src="images/edit_task.png" alt="edit" title="Editar tarefa"></a>
-										<a href="#"><img src="images/remove_task.png" alt="remove" title="Remover tarefa"></a>
-									</p>
-								</td>
-								<td>
-									<p><b>Responsável:</b> Yuri</p>
-									<p><b>Descrição:</b> Filmes etc</p>
-									<p><b>Prazo:</b>04/03/2019</p>
-									<p>
-										<a href="#"><img src="images/finish_task.png" alt="finish" title="Finalizar tarefa"></a>
-										<a href="#"><img src="images/edit_task.png" alt="edit" title="Editar tarefa"></a>
-										<a href="#"><img src="images/remove_task.png" alt="remove" title="Remover tarefa"></a>
-									</p>
-								</td>
-								<td>
-									<p><b>Responsável:</b> Rafael</p>
-									<p><b>Descrição:</b> Estudar os vulcoes</p>
-									<p><b>Prazo:</b> 27/02/2019</p>
-									<p>
-										<a href="#"><img src="images/edit_task.png" alt="edit" title="Editar tarefa"></a>
-										<a href="#"><img src="images/remove_task.png" alt="remove" title="Remover tarefa"></a>
-									</p>
-								</td>
+                <th style="background-color: GreenYellow;">Em andamento</th>
+                <?php echo $str_doing ?>
 							</tr>
+
+              <!-- coluna de tarefas finaizadas -->
 							<tr>
-								<td>
-									<p><b>Responsável:</b>Douglas</p>
-									<p><b>Descrição:</b> Desenhar personagem</p>
-									<p><b>Prazo:</b> 13/04/2019</p>
-									<p><button>Iniciar</button> <button>Editar</button> <button>Remover</button></p>
-								</td>
-								<td>
-									<p><b>Responsável:</b>Vânia</p>
-									<p><b>Descrição:</b> Criar gerenciador de tarefas</p>
-									<p><b>Prazo:</b> 03/03/2019</p>
-									<p><button>Finalizar</button> <button>Editar</button> <button>Remover</button></p>
-								</td>
-								<td>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p><b>Responsável:</b>Vitória</p>
-									<p><b>Descrição:</b> Criar novo template</p>
-									<p><b>Prazo:</b> 25/02/2019</p>
-									<p><button>Iniciar</button> <button>Editar</button> <button>Remover</button></p>
-								</td>
-								<td>
-								</td>
+                <th style="background-color: MediumSpringGreen;">Concluído</th>
+                <?php echo $str_finalized ?>
 							</tr>
 						</table>
 					</center>
 				</td>
 			<tr>
 		</table>
+    <center>
+    <a href="home.php"><button>Voltar</button></a>
+    </center>
 	</section>
 
 	<footer>

@@ -49,6 +49,9 @@ $USER_OBJ = getUser($USER_LOG);
     if(isset($ERROR))
       echo $ERROR;
     ?>
+    <center>
+      <h2>Inicio</h2>
+    </center>
 		<table cellspacing="20">
 			<tr>
 				<td>
