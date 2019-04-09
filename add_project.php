@@ -76,7 +76,7 @@ $USER_OBJ = getUser($USER_LOG);
 						<img src="images/lisa.gif" alt="Lisa" style="width:200px;height:200px;">
 						<h3><?php echo  $USER_OBJ["name"]?></h3>
 						<p><?php echo  $USER_OBJ["bio"]?></p>
-						<p><a href="login.html"><button><img src="images/out.png" alt="out"> Sair</button></a></p>
+						<p><a href="sign_in.php"><button><img src="images/out.png" alt="out"> Sair</button></a></p>
 					</div>
 				</td>
 				<td>
