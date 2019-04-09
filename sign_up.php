@@ -14,7 +14,7 @@ if(isset($_POST["submit"])) {
 
       //verifica se ja tem usuario com o mesmo username
       if(exists($_POST["username"], $array_dados)) {
-        $ERROR = "<label style='color: red'>O nome de usu está indisponível.</label>";
+        $ERROR = "<label style='color: red'>O nome de usuário está indisponível.</label>";
       } else {
         //pega os dados do ususario que vai ser inserido
         $temp = array(

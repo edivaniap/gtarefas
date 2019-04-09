@@ -7,27 +7,19 @@ function getUser($key) {
     //carrega dados atuais do json
     $curr_users = file_get_contents($file_path);
     //traduz os dados para $arrayName = array('' => , );
-  $array_users = json_decode($curr_users, true);
-  foreach ($array_users as $u) {
-    if($u["username"] == $key) {
-      return $u;
+    $array_users = json_decode($curr_users, true);
+    foreach ($array_users as $u) {
+      if($u["username"] == $key) {
+        return $u;
+      }
     }
+  } else {
+    $ERROR = "<label style='color: red'>Arquivo de dados de usuários não existe.</label>";
   }
-} else {
-  $ERROR = "<label style='color: red'>Arquivo de dados de usuários não existe.</label>";
-}
 }
 
-
-  $USER_LOG = "edi";
-  $USER_OBJ = getUser($USER_LOG);
-
-  $string = "nome: " .  $USER_OBJ["name"] . ", usuario: " . $USER_OBJ["username"] . ", bio: " .  $USER_OBJ["bio"];
-  echo $string;
-  foreach ($USER_OBJ["projects"] as $key) {
-      echo "<br>proj: " . $key;
-  }
-
+$USER_LOG = "edi";
+$USER_OBJ = getUser($USER_LOG);
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
@@ -64,7 +56,7 @@ function getUser($key) {
 						<img src="images/lisa.gif" alt="Lisa" style="width:200px;height:200px;">
 						<h3><?php echo  $USER_OBJ["name"]?></h3>
 						<p><?php echo  $USER_OBJ["bio"]?></p>
-						<p><a href="login.html"><button><img src="images/out.png" alt="out"> Sair</button></a></p>
+						<p><a href="sign_in.php"><button><img src="images/out.png" alt="out"> Sair</button></a></p>
 					</div>
 				</td>
 				<td>
@@ -82,7 +74,7 @@ function getUser($key) {
             echo $to_print;
             ?>
 					</ul>
-					<a href="adc_projeto.html"><button><img src="images/add.png" alt="add"> Projeto</button></a>
+					<a href="add_project.php"><button><img src="images/add.png" alt="add"> Projeto</button></a>
 				</td>
 			<tr>
 		</table>
